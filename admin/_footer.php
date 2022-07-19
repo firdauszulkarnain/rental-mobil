@@ -53,6 +53,8 @@
     <script src="../assets/vendor/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- SWEETALERT2 -->
     <script src="../assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
+    <!-- MYJS -->
+    <script src="../assets/js/myjs.js"></script>
     </body>
 
     </html>

@@ -6,48 +6,8 @@ require '../functions/functions.php';
 $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
 ?>
 <?php include('_header.php') ?>
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">Administrator</div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Master Data
-    </div>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="mobil.php">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Data Mobil</span></a>
-    </li>
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-</ul>
-<!-- End of Sidebar -->
-
+<?php include('_sidebar.php') ?>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -123,15 +83,15 @@ $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
                                 </thead>
                                 <tbody>
                                     <?php foreach ($mobil as $row) : ?>
-                                        <tr>
+                                        <tr class="text-center">
                                             <td></td>
                                             <th><?= $row["nama_mobil"]; ?></th>
                                             <td><?= $row['merek_mobil']; ?></td>
-                                            <td><?= $row['harga']; ?></td>
-                                            <td><?= $row['jumlah']; ?></td>
+                                            <td>Rp. <?= number_format($row['harga'], 0, ',', '.') ?></td>
+                                            <td><?= $row['jumlah']; ?> Unit</td>
                                             <td>
-                                                <a href="edit_mobil.php?id=<?= $row["id_mobil"]; ?>" class="btn btn-info">Ubah</a>
-                                                <a href="mobil.php?hapus=<?= $row["id_mobil"]; ?>" class="btn btn-danger" onclick=" return confirm ('Yakin Hapus Data?');">Hapus</a>
+                                                <a href="edit_mobil.php?id=<?= $row["id_mobil"]; ?>" class="btn btn-primary btn-sm"><i class="fas fa-fw fa-edit"></i></a>
+                                                <a href="mobil.php?hapus=<?= $row["id_mobil"]; ?>" class="btn btn-danger btn-sm" onclick=" return confirm ('Yakin Hapus Data?');"><i class="fas fa-fw fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
