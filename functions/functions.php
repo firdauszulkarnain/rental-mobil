@@ -55,3 +55,25 @@ function ubah($data)
         return mysqli_affected_rows($db);
     }
 }
+
+function sewa($data)
+{
+    // ambil variabel yang menghubungkan database
+    global $db;
+
+    // simpan data yang diinputkan user
+    $mobil_id = htmlspecialchars($data['mobil_id']);
+    $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
+    $no_hp = htmlspecialchars($data['no_hp']);
+    $jumlah_sewa = 1;
+    $subtotal = 5000;
+    $lama_pinjam = htmlspecialchars($data['lama_pinjam']);
+    $waktu_pinjam = htmlspecialchars($data['waktu_pinjam']);
+
+    // query insert
+    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam',$no_hp, $jumlah_sewa, $subtotal, $lama_pinjam, $waktu_pinjam)";
+    mysqli_query($db, $query);
+
+    // kembalikan berapa jumlah baris yang berubah
+    return mysqli_affected_rows($db);
+}
