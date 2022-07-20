@@ -66,17 +66,19 @@ function sewa($data)
     $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
     $no_hp = htmlspecialchars($data['no_hp']);
     $jumlah_sewa = 1;
-    $subtotal = 5000;
+    $harga = $data['harga'];
     $lama_pinjam = htmlspecialchars($data['lama_pinjam']);
+    $subtotal = ((int)$harga * (int)$jumlah_sewa) * (int)$lama_pinjam;
     $waktu_pinjam = htmlspecialchars($data['waktu_pinjam']);
-    $status = 'Menunggu Konfirmasi';
+    $status = 'menunggu';
 
     // query insert
-    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam',$no_hp, $jumlah_sewa, $subtotal, $lama_pinjam, $waktu_pinjam, $status)";
+    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam','$no_hp', $jumlah_sewa, $subtotal, $lama_pinjam, $waktu_pinjam, '$status')";
     mysqli_query($db, $query);
 
     // kembalikan berapa jumlah baris yang berubah
     return mysqli_affected_rows($db);
+    // return 1;
 }
 
 function update_status($data)

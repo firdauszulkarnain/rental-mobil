@@ -49,7 +49,7 @@ $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
                             </div>
                             <div class="featured__item__text">
                                 <h6 class="text-capitalize"><a href="#"><?= $item['nama_mobil'] ?></a></h6>
-                                <h5>Rp. <?= number_format($item['harga'], 0, ',', '.') ?>/Day</h5>
+                                <h5>Rp. <?= number_format($item['harga'], 0, ',', '.') ?>/Hari</h5>
                             </div>
                         </div>
                     </div>

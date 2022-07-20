@@ -1,9 +1,9 @@
 <?php
-// hubungkan dengan file functions 
 require 'functions/functions.php';
 
 $id = $_GET['id'];
-$row = mysqli_query($db, "SELECT * FROM mobil WHERE id_mobil = $id");
+$query = "SELECT * FROM mobil WHERE id_mobil = $id";
+$row = mysqli_query($db, $query);
 $row = mysqli_fetch_assoc($row);
 ?>
 
@@ -39,6 +39,7 @@ $row = mysqli_fetch_assoc($row);
                     <div class="row">
                         <div class="col-lg-7 col-md-6">
                             <input type="hidden" name="mobil_id" value="<?= $row['id_mobil'] ?>">
+                            <input type="hidden" name="harga" value="<?= $row['harga'] ?>">
                             <div class="checkout__input">
                                 <p>Nama Lengkap<span>*</span></p>
                                 <input type="text" id="nama_peminjam" name="nama_peminjam" autocomplete="off" required>
@@ -65,11 +66,11 @@ $row = mysqli_fetch_assoc($row);
                         <div class="col-lg-5 col-md-6">
                             <div class="checkout__order mt-3">
                                 <h4>Detail Order</h4>
-                                <div class="checkout__order__products">Produk <span>Total</span></div>
+                                <div class="checkout__order__products">Detail Mobil <span>Harga</span></div>
                                 <ul>
-                                    <li class="text-capitalize"><?= $row['nama_mobil'] ?> <span> Rp. <?= number_format($row['harga'], 0, ',', '.') ?>/Day</span></li>
+                                    <li class="text-capitalize"><?= $row['nama_mobil'] ?> <span> Rp. <?= number_format($row['harga'], 0, ',', '.') ?>/Hari</span></li>
                                 </ul>
-                                <div class="checkout__order__total">Total <span id="total">Rp. <?= number_format($row['harga'], 0, ',', '.'); ?></span></div>
+                                <div class="checkout__order__total">Total <span id="total"></span></div>
                                 <button type="submit" class="site-btn tombol-bayar" name="sewa">Proses Sewa Mobil</button>
                             </div>
                         </div>
