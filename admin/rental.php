@@ -89,7 +89,7 @@ $sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = 
                                             <td><?= $row['lama_pinjam']; ?> Hari</td>
                                             <td><?= $row['waktu_pinjam']; ?></td>
                                             <td>
-                                                <a href="#" data-id="<?= $row['id_sewa'] ?>" data-toggle="modal" data-target="#updateModal" class="btn btn-sm btn-info text-light modal_update"><i class="fas fa-fw fa-edit"></i></a>
+                                                <a href="#" data-id="<?= $row['id_sewa'] ?>" data-toggle="modal" data-target="#updateModal" class="btn btn-sm btn-primary text-light modal_update">Update Status</i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -122,6 +122,7 @@ $sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = 
                         <div class="form-group">
                             <label for="status">Status Peminjaman</label>
                             <select class="form-control" id="status" name="pinjam">
+                                <option value="" disabled selected>===PILIH STATUS====</option>
                                 <option value="proses">Proses</option>
                                 <option value="pinjam">Dipinjam</option>
                                 <option value="selesai">Selesai</option>
@@ -129,7 +130,7 @@ $sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = 
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-sm btn px-4 py-2" name="update">Simpan Kategori</button>
+                        <button type="submit" class="btn btn-success btn-sm btn px-4 py-2" name="update">Update Status</button>
                     </div>
                 </form>
             </div>

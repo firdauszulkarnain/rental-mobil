@@ -83,11 +83,17 @@ function update_status($data)
 {
     global $db;
     $id_sewa = htmlspecialchars($data['id_sewa']);
-    $status = htmlspecialchars($data['pinjam']);
+    $status = $data['pinjam'];
 
     // query update
-    $query = "UPDATE sewa SET status_pinjam = $status WHERE id_sewa = $id_sewa";
+    $query = "UPDATE sewa SET status_pinjam = '$status' WHERE id_sewa = $id_sewa";
     mysqli_query($db, $query);
+
+    if ($status == 'selesai') {
+        $date = date('Y-m-d');
+        $insert = "INSERT INTO laporan VALUES ('','$id_sewa','$date')";
+        mysqli_query($db, $insert);
+    }
 
     if (mysqli_affected_rows($db) == 0) {
         echo    "<script>
