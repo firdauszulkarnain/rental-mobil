@@ -31,7 +31,7 @@
             <span>Data Mobil</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="mobil.php">
+        <a class="nav-link" href="rental.php">
             <i class="fas fa-fw fa-car"></i>
             <span>Data Rental</span></a>
     </li>
