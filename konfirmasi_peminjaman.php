@@ -85,18 +85,18 @@ $row = mysqli_fetch_assoc($row);
 
 <?php
 
-// jika tombol dengan name tambah ditekan
+
 if (isset($_POST['sewa'])) {
-    // kirimkan data ke fungsi tambah dan cek apakah nilai yang dikembalikan lebih dari 1
+
     if (sewa($_POST) > 0) {
-        // jika iya tampilkan alert
+
         echo    "<script>
             Swal.fire('SUCCESS','Berhasil Sewa Mobil','success').then(function() {
                 window.location = 'index.php';
             });;
         </script>";
     } else {
-        // digunakan untuk menampilkan informasi error database
+
         echo mysqli_error($db);
     }
 }

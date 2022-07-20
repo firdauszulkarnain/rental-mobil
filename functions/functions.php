@@ -78,3 +78,24 @@ function sewa($data)
     // kembalikan berapa jumlah baris yang berubah
     return mysqli_affected_rows($db);
 }
+
+function update_status($data)
+{
+    global $db;
+    $id_sewa = htmlspecialchars($data['id_sewa']);
+    $status = htmlspecialchars($data['pinjam']);
+
+    // query update
+    $query = "UPDATE sewa SET status_pinjam = $status WHERE id_sewa = $id_sewa";
+    mysqli_query($db, $query);
+
+    if (mysqli_affected_rows($db) == 0) {
+        echo    "<script>
+                 Swal.fire('SUCCESS','Berhasil Update Status Peminjaman Mobil','success').then(function() {
+                window.location = 'rental.php';
+                });
+                </script>";
+    } else {
+        return mysqli_affected_rows($db);
+    }
+}
