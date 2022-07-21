@@ -77,7 +77,7 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> rentalmobil@gmail.com</li>
+                <li><i class="fa fa-envelope"></i> KATALOG</li>
             </ul>
         </div>
     </div>
@@ -85,13 +85,13 @@
 
     <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top">
+        <div class="header__top py-3">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fas fa-envelope"></i> rentalmobil@gmail.com</li>
+                                <li style="font-size: 18px !important;"><a href="index.php" class="text-decoration-none text-dark font-weight-bolder"><i class="fas fa-fw fa-car"></i>KATALOG MOBIL</a></li>
                             </ul>
                         </div>
                     </div>
@@ -103,20 +103,20 @@
                                 <a href="#"><i class="fab fa-whatsapp"></i></a>
                             </div>
                             <div class="header__top__right__auth">
-
-                                <!-- <div class="dropdown">
+                                <?php if (isset($_SESSION['user'])) : ?>
+                                    <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-
-                                            <span class="text-capitalize"><i class="fa fa-user"></i>Nama</span>
-
+                                            <span class="text-capitalize"><i class="fa fa-user"></i><?= $user['nama_lengkap'] ?></span>
                                         </a>
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #7FAD39;">
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
                                             <a class="dropdown-item" id="user-dropdown" href="#"><i class="fas fa-fw fa-sign-out-alt"></i> Logout</a>
                                         </div>
-                                    </div> -->
+                                    </div>
+                                <?php else : ?>
 
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                    <a href="login.php"><i class="fa fa-user"></i> Login</a>
+                                <?php endif ?>
 
                             </div>
                         </div>

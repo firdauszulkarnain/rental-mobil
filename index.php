@@ -3,6 +3,11 @@ session_start();
 // hubungkan dengan file functions 
 require 'functions/functions.php';
 
+if (isset($_SESSION["user"])) {
+    $id_user = $_SESSION['user'];
+    $result = mysqli_query($db, "SELECT * FROM user WHERE id_user = $id_user");
+    $user = mysqli_fetch_assoc($result);
+}
 // ambil data dan urutkan secara descending
 $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
 ?>
@@ -15,10 +20,10 @@ $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="hero__item set-bg" data-setbg="assets/img/banner.jpg">
+                    <div class="hero__item set-bg" data-setbg="assets/img/banner.png">
                         <div class="hero__text text-light">
-                            <h2 class="text-light">RENTAL MOBIL</h2>
-                            <p class="text-light">Cepat, Murah, Terpercaya!</p>
+                            <h2 class="bg-dark text-light py-2 px-3">RENTAL MOBIL</h2>
+                            <p class="bg-dark text-light py-2 px-3">Cepat, Murah, Terpercaya!</p>
                         </div>
                     </div>
                 </div>
@@ -31,7 +36,7 @@ $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>KATALOG</h2>
+                        <h2>KATALOG MOBIL</h2>
                     </div>
                 </div>
             </div>

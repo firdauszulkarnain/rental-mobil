@@ -65,15 +65,16 @@ function sewa($data)
     $mobil_id = htmlspecialchars($data['mobil_id']);
     $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
     $no_hp = htmlspecialchars($data['no_hp']);
-    $jumlah_sewa = 1;
+    $jumlah_sewa = htmlspecialchars($data['unit']);
     $harga = $data['harga'];
     $lama_pinjam = htmlspecialchars($data['lama_pinjam']);
     $subtotal = ((int)$harga * (int)$jumlah_sewa) * (int)$lama_pinjam;
     $waktu_pinjam = htmlspecialchars($data['waktu_pinjam']);
     $status = 'menunggu';
+    $user_id = htmlspecialchars($data['user_id']);
 
     // query insert
-    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam','$no_hp', $jumlah_sewa, $subtotal, $lama_pinjam, $waktu_pinjam, '$status')";
+    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam','$no_hp', $jumlah_sewa, $subtotal, $lama_pinjam, $waktu_pinjam, '$status', '$user_id')";
     mysqli_query($db, $query);
 
     // kembalikan berapa jumlah baris yang berubah
