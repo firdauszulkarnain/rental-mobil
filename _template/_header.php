@@ -44,29 +44,37 @@
         <div class="humberger__menu__cart">
             <ul>
                 <li>
-                    <div class="humberger__menu__widget">
-                        <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                    <?php if (isset($_SESSION['user'])) : ?>
+                        <div class="humberger__menu__widget">
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> <?= $user['nama_lengkap'] ?></a>
+                            </div>
                         </div>
-                    </div>
+                    <?php else : ?>
+                        <div class="humberger__menu__widget">
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+                    <?php endif ?>
                 </li>
                 <li>
-
                 </li>
             </ul>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-
                 <li>
-                    <a href="">Peminjaman Saya</a>
+                    <a href="index.php">KATALOG MOBIL</a>
                 </li>
-
-
-                <li>
-                    <a href="#">Logout</a>
-                </li>
-
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <li>
+                        <a href="">Peminjaman Saya</a>
+                    </li>
+                    <li>
+                        <a href="logout.php">Logout</a>
+                    </li>
+                <?php endif ?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -76,9 +84,6 @@
             <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
         <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> KATALOG</li>
-            </ul>
         </div>
     </div>
     <!-- Humberger End -->
@@ -108,7 +113,9 @@
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                                             <span class="text-capitalize"><i class="fa fa-user"></i><?= $user['nama_lengkap'] ?></span>
                                         </a>
-
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                                            <a class="dropdown-item" id="user-dropdown" href="peminjaman_saya.php"><i class="fas fa-fw fa-sign-out-alt"></i>Peminjaman Saya</a>
+                                        </div>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
                                             <a class="dropdown-item" id="user-dropdown" href="logout.php"><i class="fas fa-fw fa-sign-out-alt"></i> Logout</a>
                                         </div>

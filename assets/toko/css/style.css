@@ -74,23 +74,23 @@ ul.gp_pagination li a img {
 	border: none;
 }
 ul.gp_pagination li a {
-	color: #7fad39;
+	color: #249bc8;
 	border-color: #1c7947;
 	background: white;
 }
 ul.gp_pagination li a:hover,
 ul.gp_pagination li a.current {
-	text-shadow: 0px 1px #7fad39;
-	border-color: #7fad39;
-	background: #7fad39;
-	background: -moz-linear-gradient(top, #7fad39 1px, #7fad39 1px, #7fad39);
+	text-shadow: 0px 1px #249bc8;
+	border-color: #249bc8;
+	background: #249bc8;
+	background: -moz-linear-gradient(top, #249bc8 1px, #249bc8 1px, #249bc8);
 	background: -webkit-gradient(
 		linear,
 		0 0,
 		0 100%,
-		color-stop(0.02, #7fad39),
-		color-stop(0.02, #7fad39),
-		color-stop(1, #7fad39)
+		color-stop(0.02, #249bc8),
+		color-stop(0.02, #249bc8),
+		color-stop(1, #249bc8)
 	);
 }
 
@@ -136,12 +136,12 @@ ul.gp_pagination li a.current {
 .pagination > li > a,
 .pagination > li > span {
 	background-color: white !important;
-	color: #7fad39;
+	color: #249bc8;
 }
 .pagination > li.active > a,
 .pagination > li.active > span {
-	background-color: #7fad39 !important;
-	border: solid 1px #7fad39 !important;
+	background-color: #249bc8 !important;
+	border: solid 1px #249bc8 !important;
 }
 
 #user-dropdown {
