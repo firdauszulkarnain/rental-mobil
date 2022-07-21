@@ -107,3 +107,40 @@ function update_status($data)
         return mysqli_affected_rows($db);
     }
 }
+
+function registrasi($data)
+{
+    global $db;
+    $nama_lengkap = htmlspecialchars($data['nama_lengkap']);
+    $notelp = htmlspecialchars($data['notelp']);
+    $username = htmlspecialchars($data['username']);
+    $password = htmlspecialchars($data['password1']);
+    $password2 = htmlspecialchars($data['password2']);
+
+
+    //Cek Username apakah di database ada atau tidak
+    $result = mysqli_query($db,  "SELECT username FROM user WHERE username = '$username'");
+
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+        Swal.fire('Erorr','Username Telah Digunakan','error');
+        </script>";
+        return false;
+    }
+
+    //Cek Konfirmasi Password sama atau tidak
+    if ($password !== $password2) {
+        echo "<script>
+        Swal.fire('Erorr','Konfimarsi Password Salah','warning');
+        </script>";
+        return false;
+    }
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    //Tambah User Ke Database
+    $query = "INSERT INTO user VALUES('','$nama_lengkap', '$notelp','$username','$password')";
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}

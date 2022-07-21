@@ -41,9 +41,15 @@ $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
                             <div class="featured__item__pic set-bg" data-setbg="assets/img/mobil.png">
                                 <ul class="featured__item__pic__hover">
                                     <li>
-                                        <a href="konfirmasi_peminjaman.php?id=<?= $item["id_mobil"]; ?>">
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </a>
+                                        <?php if (isset($_SESSION['user'])) : ?>
+                                            <a href="konfirmasi_peminjaman.php?id=<?= $item["id_mobil"]; ?>">
+                                                <?= isset($_SESSION['user']) ?>
+                                            </a>
+                                        <?php else : ?>
+                                            <a href="login.php">
+                                                <i class="fas fa-shopping-bag"></i>
+                                            </a>
+                                        <?php endif; ?>
                                     </li>
                                 </ul>
                             </div>
