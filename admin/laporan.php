@@ -62,7 +62,9 @@ $laporan = mysqli_query($db, $query);
                                             <td>Rp. <?= number_format($row['subtotal'], 0, ',', '.') ?></td>
                                             <td><?= $row['waktu_pinjam']; ?></td>
                                             <td><?= $row['tanggal_selesai']; ?></td>
-                                            <td></td>
+                                            <td>
+                                                <a href="detail_laporan.php?id=<?= $row["id_laporan"]; ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

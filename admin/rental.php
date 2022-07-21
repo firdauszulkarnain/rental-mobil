@@ -16,7 +16,7 @@ if (!isset($_SESSION["admin"])) {
 require '../functions/functions.php';
 
 // ambil data dan urutkan secara descending
-$sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = mb.id_mobil ORDER BY id_sewa DESC");
+$sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = mb.id_mobil WHERE status_pinjam != 'selesai' ORDER BY id_sewa DESC");
 ?>
 <?php include('_header.php') ?>
 
@@ -51,6 +51,7 @@ $sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = 
                                         <th>Subtotal</th>
                                         <th>Durasi</th>
                                         <th>Tanggal Pinjam</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -64,7 +65,19 @@ $sewa = mysqli_query($db, "SELECT * FROM sewa sw JOIN mobil mb ON sw.mobil_id = 
                                             <td><?= $row['lama_pinjam']; ?> Hari</td>
                                             <td><?= $row['waktu_pinjam']; ?></td>
                                             <td>
+                                                <?php if ($row['status_pinjam'] == 'menunggu') : ?>
+                                                    <span class="badge badge-danger">MENUNGGU</span>
+                                                <?php elseif ($row['status_pinjam'] == 'proses') : ?>
+                                                    <span class="badge badge-warning text-dark">PROSES</span>
+                                                <?php elseif ($row['status_pinjam'] == 'pinjam') : ?>
+                                                    <span class="badge badge-primary">DIPINJAM</span>
+                                                <?php else : ?>
+                                                    <span class="badge badge-success">SELESAI</span>
+                                                <?php endif ?>
+                                            </td>
+                                            <td>
                                                 <a href="#" data-id="<?= $row['id_sewa'] ?>" data-toggle="modal" data-target="#updateModal" class="btn btn-sm btn-primary text-light modal_update">Update Status</i></a>
+                                                <a href="detail_rental.php?id=<?= $row["id_sewa"]; ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

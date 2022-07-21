@@ -69,12 +69,12 @@ function sewa($data)
     $harga = $data['harga'];
     $lama_pinjam = htmlspecialchars($data['lama_pinjam']);
     $subtotal = ((int)$harga * (int)$jumlah_sewa) * (int)$lama_pinjam;
-    $waktu_pinjam = htmlspecialchars($data['waktu_pinjam']);
+    $waktu_pinjam = date("Y-m-d", strtotime($data['waktu_pinjam']));
     $status = 'menunggu';
     $user_id = htmlspecialchars($data['user_id']);
 
     // query insert
-    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam','$no_hp', $jumlah_sewa, $subtotal, $lama_pinjam, $waktu_pinjam, '$status', '$user_id')";
+    $query = "INSERT INTO sewa VALUES ('','$mobil_id','$nama_peminjam','$no_hp', $jumlah_sewa, $subtotal, $lama_pinjam, '$waktu_pinjam', '$status', '$user_id')";
     mysqli_query($db, $query);
 
     // kembalikan berapa jumlah baris yang berubah
