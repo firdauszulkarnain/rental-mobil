@@ -1,4 +1,5 @@
 <?php
+session_start();
 // hubungkan dengan file functions 
 require 'functions/functions.php';
 
@@ -43,7 +44,7 @@ $mobil = mysqli_query($db, "SELECT * FROM mobil ORDER BY id_mobil DESC");
                                     <li>
                                         <?php if (isset($_SESSION['user'])) : ?>
                                             <a href="konfirmasi_peminjaman.php?id=<?= $item["id_mobil"]; ?>">
-                                                <?= isset($_SESSION['user']) ?>
+                                                <i class="fas fa-shopping-bag"></i>
                                             </a>
                                         <?php else : ?>
                                             <a href="login.php">

@@ -2,13 +2,13 @@
 // Mulai Session
 session_start();
 
-// // Cek session apakah sudah login
-// if (!isset($_SESSION["user"])) {
-//     // kalo belum, login dulu
-//     $url = 'login.php';
-//     header("Location: $url");
-//     exit;
-// }
+// Cek session apakah sudah login
+if (!isset($_SESSION["user"])) {
+    // kalo belum, login dulu
+    $url = 'login.php';
+    header("Location: $url");
+    exit;
+}
 require 'functions/functions.php';
 
 $id = $_GET['id'];
