@@ -98,9 +98,9 @@ $row = mysqli_fetch_assoc($row);
                                 <h4>Detail Order</h4>
                                 <div class="checkout__order__products">Detail Mobil <span>Harga</span></div>
                                 <ul>
-                                    <li class="text-capitalize"><?= $row['nama_mobil'] ?> <span> Rp. <?= number_format($row['harga'], 0, ',', '.') ?>/Hari</span></li>
+                                    <li class="text-capitalize"><?= $row['nama_mobil'] ?> <span> Rp. <?= number_format($row['harga'], 0, ',', '.') ?>/Unit-Hari</span></li>
                                 </ul>
-                                <div class="checkout__order__total">Total <span id="total"></span></div>
+                                <!-- <div class="checkout__order__total">Total <span id="total"></span></div> -->
                                 <button type="submit" class="site-btn tombol-bayar" name="sewa" style="background-color: black;">Proses Sewa Mobil</button>
                             </div>
                         </div>

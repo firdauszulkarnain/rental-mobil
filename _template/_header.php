@@ -110,7 +110,7 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
-                                            <a class="dropdown-item" id="user-dropdown" href="#"><i class="fas fa-fw fa-sign-out-alt"></i> Logout</a>
+                                            <a class="dropdown-item" id="user-dropdown" href="logout.php"><i class="fas fa-fw fa-sign-out-alt"></i> Logout</a>
                                         </div>
                                     </div>
                                 <?php else : ?>
