@@ -65,10 +65,10 @@ function sewa($data)
     $mobil_id = htmlspecialchars($data['mobil_id']);
     $nama_peminjam = htmlspecialchars($data['nama_peminjam']);
     $no_hp = htmlspecialchars($data['no_hp']);
-    $jumlah_sewa = htmlspecialchars($data['unit']);
-    $harga = $data['harga'];
-    $lama_pinjam = htmlspecialchars($data['lama_pinjam']);
-    $subtotal = ((int)$harga * (int)$jumlah_sewa) * (int)$lama_pinjam;
+    $jumlah_sewa = (int) $data['unit'];
+    $harga = (int) $data['harga'];
+    $lama_pinjam = (int) $data['lama_pinjam'];
+    $subtotal = ($harga * $jumlah_sewa) * $lama_pinjam;
     $waktu_pinjam = date("Y-m-d", strtotime($data['waktu_pinjam']));
     $status = 'menunggu';
     $user_id = htmlspecialchars($data['user_id']);

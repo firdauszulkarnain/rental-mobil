@@ -113,10 +113,9 @@
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                                             <span class="text-capitalize"><i class="fa fa-user"></i><?= $user['nama_lengkap'] ?></span>
                                         </a>
+
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
-                                            <a class="dropdown-item" id="user-dropdown" href="peminjaman_saya.php"><i class="fas fa-fw fa-sign-out-alt"></i>Peminjaman Saya</a>
-                                        </div>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                                            <a class="dropdown-item" id="user-dropdown" href="peminjaman_saya.php"><i class="fas fa-fw fa-car"></i>Peminjaman Saya</a>
                                             <a class="dropdown-item" id="user-dropdown" href="logout.php"><i class="fas fa-fw fa-sign-out-alt"></i> Logout</a>
                                         </div>
                                     </div>
