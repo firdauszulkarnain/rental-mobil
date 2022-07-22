@@ -27,7 +27,8 @@
 <script src="assets/vendor/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/vendor/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/vendor/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-
+<!-- JQUERY MASKING Money -->
+<script src="assets/js/jquery-mask/jquery.mask.js"></script>
 <script src="assets/js/myjs.js"></script>
 </body>
 

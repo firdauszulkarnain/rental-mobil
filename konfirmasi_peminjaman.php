@@ -56,7 +56,7 @@ $row = mysqli_fetch_assoc($row);
                     <div class="row">
                         <div class="col-lg-7 col-md-6">
                             <input type="hidden" name="mobil_id" value="<?= $row['id_mobil'] ?>">
-                            <input type="hidden" name="harga" value="<?= $row['harga'] ?>">
+                            <input type="hidden" name="harga" id="harga" value="<?= $row['harga'] ?>">
                             <input type="hidden" name="user_id" value="<?= $_SESSION["user"] ?>">
                             <div class="form-group">
                                 <label for="nama_peminjam">Nama Lengkap</label>
@@ -70,7 +70,7 @@ $row = mysqli_fetch_assoc($row);
                                 <div class="col-lg-3">
                                     <label for="unit">Jumlah Pinjam</label>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control" id="unit" name="unit" autocomplete="off" value="1" required>
+                                        <input type="text" class="form-control number" id="unit" name="unit" autocomplete="off" value="1" required>
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">Unit</span>
                                         </div>
@@ -79,7 +79,7 @@ $row = mysqli_fetch_assoc($row);
                                 <div class="col-lg-4">
                                     <label for="lama_pinjam">Lama Pinjam</label>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control" id="lama_pinjam" name="lama_pinjam" autocomplete="off" required value="1">
+                                        <input type="text" class="form-control number" id="lama_pinjam" name="lama_pinjam" autocomplete="off" required value="1">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">Hari</span>
                                         </div>
@@ -100,7 +100,7 @@ $row = mysqli_fetch_assoc($row);
                                 <ul>
                                     <li class="text-capitalize"><?= $row['nama_mobil'] ?> <span> Rp. <?= number_format($row['harga'], 0, ',', '.') ?>/Unit-Hari</span></li>
                                 </ul>
-                                <!-- <div class="checkout__order__total">Total <span id="total"></span></div> -->
+                                <div class="checkout__order__total">Total <span id="total"> Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span></div>
                                 <button type="submit" class="site-btn tombol-bayar" name="sewa" style="background-color: black;">Proses Sewa Mobil</button>
                             </div>
                         </div>
@@ -113,6 +113,60 @@ $row = mysqli_fetch_assoc($row);
 </div>
 
 <?php require "_template/_footer.php"; ?>
+
+
+<script>
+    $(document).ready(function() {
+        $('#lama_pinjam').on('input', function(e) {
+            var durasi = $(this).val();
+            var unit = $('#unit').val()
+            var harga = $('#harga').val();
+            if (durasi != '') {
+                durasi = parseInt(durasi);
+                unit = parseInt(unit)
+                var total = unit * durasi * parseInt(harga);
+
+                var totalBayar = parseInt(total);
+                var number_string = totalBayar.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                $("#total").html("Rp. " + rupiah);
+            }
+
+        });
+
+        $('#unit').on('input', function(e) {
+            var unit = $(this).val();
+            var durasi = $('#lama_pinjam').val()
+            var harga = $('#harga').val();
+            if (unit != '') {
+                unit = parseInt(unit);
+                durasi = parseInt(durasi)
+                var total = unit * durasi * parseInt(harga);
+                var totalBayar = parseInt(total);
+
+                var number_string = totalBayar.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                $("#total").html("Rp. " + rupiah);
+            }
+        });
+    });
+</script>
 
 <?php
 
